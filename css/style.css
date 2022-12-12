@@ -117,7 +117,8 @@
     opacity: 0.6;
 }
 
-#autoplay-btn:focus{
+#autoplay-btn:focus,
+#autoplay-btn.active{
     opacity: 1;
     color: rgb(210, 210, 210);
     border-color: rgb(210, 210, 210);

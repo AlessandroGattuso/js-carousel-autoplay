@@ -141,6 +141,8 @@ document.getElementById('autoplay-btn').addEventListener("click", function(){
     if(this.innerHTML == `<i class="fa-solid fa-play"></i>`){
         //se clicca il bottone ed è in pause scorri il carosello(5s)
         this.innerHTML = `<i class="fa-solid fa-pause"></i>`;
+        this.classList.add('active');
+
         interval = setInterval(() => {
             items[itemActive].classList.remove('active');
             circles[itemActive].classList.remove('active');
@@ -160,5 +162,6 @@ document.getElementById('autoplay-btn').addEventListener("click", function(){
     else{
         this.innerHTML = `<i class="fa-solid fa-play"></i>`;
         clearInterval(interval);
+        this.classList.remove('active');
     }
 });
