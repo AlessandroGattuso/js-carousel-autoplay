@@ -134,9 +134,9 @@ document.addEventListener('keydown', (event) => {
 }, false);
 
 //Auto play pulsante
-document.getElementById('autoplay-btn').addEventListener("click", function(){
+let interval;
 
-    let interval;
+document.getElementById('autoplay-btn').addEventListener("click", function(){
 
     if(this.innerHTML == `<i class="fa-solid fa-play"></i>`){
         //se clicca il bottone ed è in pause scorri il carosello(5s)
@@ -153,7 +153,8 @@ document.getElementById('autoplay-btn').addEventListener("click", function(){
             items[itemActive].classList.add('active');
             circles[itemActive].classList.add('active');
             previewItems[itemActive].classList.add('active');
-        }, 5000);
+        }, 3000);
+
     }
     //se clicca il bottone ed è in play blocca lo scorrimento
     else{
