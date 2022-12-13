@@ -106,12 +106,14 @@ autoplay.addEventListener("click", function(){
     }
 });
 
-autoplay.addEventListener('mouseout', function(event){
+//Se il mouse non è sopra il bottone, il bottone scompare
+autoplay.addEventListener('mouseleave', function(event){
     if(event)
-         setTimeout(()=>this.style.opacity = '0', 4000);
+         setTimeout(()=>this.style.opacity = '0', 3000);
 });
 
-autoplay.addEventListener('mouseover', function(event){
+//Se il mouse invece entra nell'area del bottone questo appare
+autoplay.addEventListener('mouseenter', function(event){
     if(event)
          this.style.opacity = '1';
 });
