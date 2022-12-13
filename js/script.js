@@ -121,30 +121,37 @@ autoplay.addEventListener('mouseenter', function(event){
 
 
 function scroll_Right_Down(){
-    //vado a rimuovere la classe active da quello attuale
-    items[itemActive].classList.remove('active');
-    circles[itemActive].classList.remove('active');
-    previewItems[itemActive].classList.remove('active');
+
+    removeActive();
 
     //verifico che non siamo fuori dall'array
     (itemActive < imagesArray.length - 1) ? itemActive++ : itemActive = 0;
 
-    //aggiungere la class active all'elemento successivo dell'Array items e cicle
-    items[itemActive].classList.add('active');
-    circles[itemActive].classList.add('active');
-    previewItems[itemActive].classList.add('active');
+
+    addActive();
+    
 }
 
 function scroll_Left_Up(){
-    //vado a rimuovere la classe active da quello attuale
-    items[itemActive].classList.remove('active');
-    circles[itemActive].classList.remove('active');
-    previewItems[itemActive].classList.remove('active');
+
+    removeActive();
 
     //verifico che non siamo fuori dall'array
     (itemActive > 0) ? itemActive-- : itemActive = imagesArray.length - 1;
 
-    //aggiungere la class active all'elemento precedente dell'Array items e cicle
+    addActive();
+
+}
+
+//vado a rimuovere la classe active da quello attuale
+function removeActive(){
+    items[itemActive].classList.remove('active');
+    circles[itemActive].classList.remove('active');
+    previewItems[itemActive].classList.remove('active');
+}
+
+//aggiungere la class active all'elemento precedente dell'Array items e cicle
+function addActive(){
     items[itemActive].classList.add('active');
     circles[itemActive].classList.add('active');
     previewItems[itemActive].classList.add('active');
