@@ -48,17 +48,13 @@ for(let i = 0; i < circles.length; i++){
     let circle = document.getElementById("circle-"+i);
     circle.addEventListener('click', () => {
         //vado a rimuovere la classe active da quello attuale
-        items[itemActive].classList.remove('active');
-        circles[itemActive].classList.remove('active');
-        previewItems[itemActive].classList.remove('active');
+        removeActive()
 
         //vado a mettere il mio indice in base a quale cerchio l'utente ha cliccato
         itemActive = i;
 
         //aggiungere la class active all'elemento precedente dell'Array items e cicle
-        items[itemActive].classList.add('active');
-        circles[itemActive].classList.add('active');
-        previewItems[itemActive].classList.add('active');
+        addActive()
     });
 }
 
@@ -129,7 +125,7 @@ function scroll_Right_Down(){
 
 
     addActive();
-    
+
 }
 
 function scroll_Left_Up(){
