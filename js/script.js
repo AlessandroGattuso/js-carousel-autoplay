@@ -86,8 +86,9 @@ document.addEventListener('keydown', (event) => {
 
 //Auto play pulsante
 let interval;
+const autoplay = document.getElementById('autoplay-btn');
 
-document.getElementById('autoplay-btn').addEventListener("click", function(){
+autoplay.addEventListener("click", function(){
 
     if(this.innerHTML == `<i class="fa-solid fa-play"></i>`){
         //se clicca il bottone ed è in pause scorri il carosello(5s)
@@ -104,6 +105,18 @@ document.getElementById('autoplay-btn').addEventListener("click", function(){
         this.classList.remove('active');
     }
 });
+
+autoplay.addEventListener('mouseout', function(event){
+    if(event)
+         setTimeout(()=>this.style.opacity = '0', 4000);
+});
+
+autoplay.addEventListener('mouseover', function(event){
+    if(event)
+         this.style.opacity = '1';
+});
+
+
 
 function scroll_Right_Down(){
     //vado a rimuovere la classe active da quello attuale
