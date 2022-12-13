@@ -62,75 +62,26 @@ for(let i = 0; i < circles.length; i++){
     });
 }
 
-next.addEventListener('click', () => {
+next.addEventListener('click', scroll_Left_Up);
 
-    //vado a rimuovere la classe active da quello attuale
-    items[itemActive].classList.remove('active');
-    circles[itemActive].classList.remove('active');
-    previewItems[itemActive].classList.remove('active');
-
-    //verifico che non siamo fuori dall'array
-    (itemActive > 0) ? itemActive-- : itemActive = imagesArray.length - 1;
-
-    //aggiungere la class active all'elemento precedente dell'Array items e cicle
-    items[itemActive].classList.add('active');
-    circles[itemActive].classList.add('active');
-    previewItems[itemActive].classList.add('active');
-    
-});
-
-prev.addEventListener('click', () => {
-
-    //vado a rimuovere la classe active da quello attuale
-    items[itemActive].classList.remove('active');
-    circles[itemActive].classList.remove('active');
-    previewItems[itemActive].classList.remove('active');
-
-    //verifico che non siamo fuori dall'array
-    (itemActive < imagesArray.length - 1) ? itemActive++ : itemActive = 0;
-
-    //aggiungere la class active all'elemento successivo dell'Array items e cicle
-    items[itemActive].classList.add('active');
-    circles[itemActive].classList.add('active');
-    previewItems[itemActive].classList.add('active');
-    
-})
+prev.addEventListener('click', scroll_Right_Down);
 
 //Aggiungo gli eventi alla freccia a destra e sotto(puoi scorrere premendo la freccia a destra e sotto)
 document.addEventListener('keydown', (event) => {
     
     if(event.key == "ArrowRight" || event.key == "ArrowDown"){
-        items[itemActive].classList.remove('active');
-        circles[itemActive].classList.remove('active');
-        previewItems[itemActive].classList.remove('active');
-    
-        //verifico che non siamo fuori dall'array
-        (itemActive < imagesArray.length - 1) ? itemActive++ : itemActive = 0;
-    
-        //aggiungere la class active all'elemento successivo dell'Array items e cicle
-        items[itemActive].classList.add('active');
-        circles[itemActive].classList.add('active');
-        previewItems[itemActive].classList.add('active');
+       scroll_Right_Down();
     }
+
 }, false);
 
 //Aggiungo gli eventi alla freccia a sinistra e sopra(puoi scorrere premendo la freccia a sinistra e sopra)
 document.addEventListener('keydown', (event) => {
 
     if(event.key == "ArrowLeft" || event.key == "ArrowUp"){
-        //vado a rimuovere la classe active da quello attuale
-        items[itemActive].classList.remove('active');
-        circles[itemActive].classList.remove('active');
-        previewItems[itemActive].classList.remove('active');
-
-        //verifico che non siamo fuori dall'array
-        (itemActive > 0) ? itemActive-- : itemActive = imagesArray.length - 1;
-
-        //aggiungere la class active all'elemento precedente dell'Array items e cicle
-        items[itemActive].classList.add('active');
-        circles[itemActive].classList.add('active');
-        previewItems[itemActive].classList.add('active');
+        scroll_Left_Up();
     }
+
 }, false);
 
 //Auto play pulsante
@@ -143,19 +94,7 @@ document.getElementById('autoplay-btn').addEventListener("click", function(){
         this.innerHTML = `<i class="fa-solid fa-pause"></i>`;
         this.classList.add('active');
 
-        interval = setInterval(() => {
-            items[itemActive].classList.remove('active');
-            circles[itemActive].classList.remove('active');
-            previewItems[itemActive].classList.remove('active');
-        
-            //verifico che non siamo fuori dall'array
-            (itemActive < imagesArray.length - 1) ? itemActive++ : itemActive = 0;
-        
-            //aggiungere la class active all'elemento successivo dell'Array items e cicle
-            items[itemActive].classList.add('active');
-            circles[itemActive].classList.add('active');
-            previewItems[itemActive].classList.add('active');
-        }, 3000);
+        interval = setInterval(scroll_Right_Down, 3000);
 
     }
     //se clicca il bottone ed è in play blocca lo scorrimento
@@ -165,3 +104,33 @@ document.getElementById('autoplay-btn').addEventListener("click", function(){
         this.classList.remove('active');
     }
 });
+
+function scroll_Right_Down(){
+    //vado a rimuovere la classe active da quello attuale
+    items[itemActive].classList.remove('active');
+    circles[itemActive].classList.remove('active');
+    previewItems[itemActive].classList.remove('active');
+
+    //verifico che non siamo fuori dall'array
+    (itemActive < imagesArray.length - 1) ? itemActive++ : itemActive = 0;
+
+    //aggiungere la class active all'elemento successivo dell'Array items e cicle
+    items[itemActive].classList.add('active');
+    circles[itemActive].classList.add('active');
+    previewItems[itemActive].classList.add('active');
+}
+
+function scroll_Left_Up(){
+    //vado a rimuovere la classe active da quello attuale
+    items[itemActive].classList.remove('active');
+    circles[itemActive].classList.remove('active');
+    previewItems[itemActive].classList.remove('active');
+
+    //verifico che non siamo fuori dall'array
+    (itemActive > 0) ? itemActive-- : itemActive = imagesArray.length - 1;
+
+    //aggiungere la class active all'elemento precedente dell'Array items e cicle
+    items[itemActive].classList.add('active');
+    circles[itemActive].classList.add('active');
+    previewItems[itemActive].classList.add('active');
+}
