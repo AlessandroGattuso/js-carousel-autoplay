@@ -103,13 +103,20 @@ autoplay.addEventListener("click", function(){
 
 
 //Se il mouse non è sopra il bottone, il bottone scompare
-autoplay.addEventListener('mouseleave', function(){
-         setTimeout(()=>this.style.opacity = '0', 3500);
+autoplay.addEventListener('mouseleave', function(event){
+
+    if(event)
+        setTimeout(()=>this.style.opacity = '0', 3500);
+    
+
 });
 
 //Se il mouse invece entra nell'area del bottone questo appare
-autoplay.addEventListener('mouseenter', function(){
-         this.style.opacity = '1';
+autoplay.addEventListener('mouseenter', function(event){
+
+    if(event)
+        this.style.opacity = '1';
+    
 });
 
 
