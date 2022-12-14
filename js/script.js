@@ -47,14 +47,13 @@ const next = document.querySelector('.next');
 for(let i = 0; i < circles.length; i++){
     let circle = document.getElementById("circle-"+i);
     circle.addEventListener('click', () => {
-        //vado a rimuovere la classe active da quello attuale
-        removeActive()
+        removeActive();
 
         //vado a mettere il mio indice in base a quale cerchio l'utente ha cliccato
         itemActive = i;
 
-        //aggiungere la class active all'elemento precedente dell'Array items e cicle
-        addActive()
+    
+        addActive();
     });
 }
 
@@ -104,14 +103,12 @@ autoplay.addEventListener("click", function(){
 
 
 //Se il mouse non è sopra il bottone, il bottone scompare
-autoplay.addEventListener('mouseleave', function(event){
-    if(event)
+autoplay.addEventListener('mouseleave', function(){
          setTimeout(()=>this.style.opacity = '0', 3500);
 });
 
 //Se il mouse invece entra nell'area del bottone questo appare
-autoplay.addEventListener('mouseenter', function(event){
-    if(event)
+autoplay.addEventListener('mouseenter', function(){
          this.style.opacity = '1';
 });
 
